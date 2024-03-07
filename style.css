@@ -1,0 +1,76 @@
+
+body {
+    max-width: 100%;
+    background: #f7e0db;
+}
+
+.story {
+    max-width: 940px;
+    margin: 0 auto 0 auto;
+    padding-bottom: 400px;
+}
+
+h1 {
+    font-family: 'cabin', sans-serif;
+    padding-top: 80px;
+} 
+
+h2 {
+    white-space: pre;
+    font-family: 'cabin', sans-serif;
+    font-size: 15px;
+    text-align: right;
+    padding-bottom: 30px;
+    color: rgb(53, 59, 53);
+}
+
+h3 {
+    /* padding: 10px 50px 10px 300px; */
+    font-family: 'cabin', sans-serif;
+    font-size: 20px;
+    padding: 30px auto 30px auto;
+}
+
+p {
+    font-size: 18px;
+    padding-top: 10px;
+    margin: 0 auto 20px auto;
+}
+
+.columns {
+    
+}
+
+img {
+    padding: 20px auto 20px auto;
+}
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    font-family: 'cabin', sans-serif;
+    font-size: x-large;
+    background-color: rgb(248, 236, 242);
+    color: #4A4A4A;
+    cursor: pointer;
+    /* padding: 10px; */
+    /* width: 100%; */
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin-bottom: 20px;
+}
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+    background-color: rgb(255, 134, 195);
+}
+  
+  /* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color: rgb(248, 236, 242);
+    display: none;
+    overflow: hidden;
+}
