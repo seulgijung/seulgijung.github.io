@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="" width=device-width, initial-scale="1, shrink-to-fit=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,42 +14,72 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap"
     rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Seulgi Jung's portfolio</title>
 </head>
 
 <body>
   <div class="story">
-    <h1 class="title" is-1>SEULGI JUNG</h1>
+    <h1 class="title" is-1>SEULGI JUNG      정슬기</h1>
 
     <h2>seulgi.jung1109@gmail.com <a href="https://www.linkedin.com/in/seulgi-jung-4b066b22a/"
         target="_blank">LinkedIn</a> <a href="https://twitter.com/seulgi_data" target="_blank">Twitter</a></h2>
 
-    <div class="columns is-multiline columns is-variable is-8">
-      <div class="column is-half">
-        <p>Hello and 안녕하세요! My name is Seulgi, I'm a data journalist in Seoul, South Korea. I use data and graphics to tell stories about complex, often misunderstood issues in our society. I got started writing community dispatches, authoring realtime updates on public health protocols. I will be continuing my journey at Columbia University's Graduate program in Data Journalism this fall, graduating in summer 2026.</p>
-
-        <p>In my work you'll find data-driven insights on urgent questions and topics affecting South Korea, like our relationship with the North; the question of representation in our entertainment; and the way history and memory in our literature can shape the Korean future.</p>
-
-        <p>I'm passionate about the current issues affecting all communities in South Korea. I'm drawn to issues which too often remain lost in the shadows. Please contact me at seulgi.jung1109@gmail.com for assignments, appearances, or just to chat!</p>
-      </div>
-
-      <div class="column is-half">
-          <div class="accordion"><a href="https://seulgijung.github.io/Korean-Chinese/" target="_blank">Stereotypes in Media: The COVID-19 Pandemic Inflames Troubling Discourse on Joseonjok
-          </a></div>
-          <img src="img/Korean_Chinese.gif" width="500" height="600">
-          <p class="panel">I covered a soaring xenophobic phenomenon in Korea, singularly targeting Korean Chinese, called joseon-jok. I used Selenium to scrape data and Python to refine it. The graph was created with free Javascript source, and ai2html & Scrollama were used for the other graphic Korean translation is available for this piece.</p>
-
-          <div class="accordion"><a href="https://seulgijung.github.io/Is-North-Korea-Preparing-for-a-War/" target="_blank">Is North Korea Preparing for a War?</a></div>
-          <img src="img/ryonpho_original.gif" width="500" height="600">
-          <p class="panel">I got a hint for this project from a presentaion by Mr. Suh Jae-jeong, a professor in the Department of Politics and International Studies at International Christian University, clearing the North's true intention amid the current security crisis on the Korean peninsula. I used Mapbox Scrollytelling template and added some structural changes using Javascript. Satelite images were gained from Google Earth.</p>
-
-          <div class="accordion"><a href="https://seulgijung.github.io/When-History-Answers-You-After-44-Years/" target="_blank">When History Answers You After 44 Years</a></div>
-          <!-- <img src="img/ryonpho_original.gif" width="500" height="600"> -->
-          <p class="panel">In the night of December 3rd of 2024, Yoon Seok-yeol, now impeached, imposed a martial law in an attempt to wrestle the power out of the congress dominated by a majority of the opposition party. The martial law, enforced for the frist time in 45 years, was foiled in two hours by hundreds of citizens who immediately came to the National Assembly Building and protected it from being occupied by the military. I focused on how Korea's bloody past has helped its people save democracy again, even inspiring and empowering beyond the nation. </p>
-
-      </div>
-    </div>
+        <div class="columns is-variable is-8">
+          <!-- 왼쪽: 영문 소개 -->
+          <div class="column is-one-third en">
+            <p>Hello! My name is Seulgi, I'm a data journalist in Seoul, South Korea. I use data and graphics to tell stories about complex, often misunderstood issues in our society. I got started writing community dispatches, authoring realtime updates on public health protocols. I will be continuing my journey at Columbia University's Graduate program in Data Journalism this fall, graduating in summer 2026.</p>
+        
+            <p>In my work you'll find data-driven insights on urgent questions and topics affecting South Korea, like our relationship with the North; the question of representation in our entertainment; and the way history and memory in our literature can shape the Korean future.</p>
+        
+            <p>I'm passionate about the current issues affecting all communities in South Korea. I'm drawn to issues which too often remain lost in the shadows. Please contact me at <a href="mailto:seulgi.jung1109@gmail.com">seulgi.jung1109@gmail.com</a> for assignments, appearances, or just to chat!</p>
+          </div>
+        
+          <!-- 가운데: 기사 스택 -->
+          <div class="column is-one-third articles">
+            <!-- Article 1 -->
+            <div class="accordion">
+              <a href="https://seulgijung.github.io/Korean-Chinese/" target="_blank">
+                Stereotypes in Media: The COVID-19 Pandemic Inflames Troubling Discourse on Joseonjok
+              </a>
+            </div>
+            <div class="panel">
+              <img src="img/Korean_Chinese.gif" alt="Korean-Chinese project preview">
+              <p>I covered a soaring xenophobic phenomenon in Korea, singularly targeting Korean Chinese, called joseon-jok. I used Selenium to scrape data and Python to refine it. The graph was created with free Javascript source, and ai2html & Scrollama were used for the other graphic. Korean translation is available for this piece.</p>
+            </div>
+        
+            <!-- Article 2 -->
+            <div class="accordion">
+              <a href="https://seulgijung.github.io/Is-North-Korea-Preparing-for-a-War/" target="_blank">
+                Is North Korea Preparing for a War?
+              </a>
+            </div>
+            <div class="panel">
+              <img src="img/ryonpho_original.gif" alt="Is North Korea Preparing for a War? preview">
+              <p>I got a hint for this project from a presentation by Mr. Suh Jae-jeong, a professor in the Department of Politics and International Studies at International Christian University, clearing the North's true intention amid the current security crisis on the Korean peninsula. I used Mapbox Scrollytelling template and added some structural changes using Javascript. Satellite images were gained from Google Earth.</p>
+            </div>
+        
+            <!-- Article 3 -->
+            <div class="accordion">
+              <a href="https://seulgijung.github.io/When-History-Answers-You-After-44-Years/" target="_blank">
+                When History Answers You After 44 Years
+              </a>
+            </div>
+            <div class="panel">
+              <p>On the night of December 3rd of 2024, Yoon Seok-yeol, now impeached, imposed a martial law in an attempt to wrestle the power out of the congress dominated by the opposition party that had long since been in a standoff with the president. The martial law, enforced for the first time in 45 years, was foiled in just two hours by hundreds of citizens who had gotten out of bed and immediately rushed to the National Assembly Building and stood arm in arm, shielding it from specialized troops depoloyed for an armed occupation. I focused on how Korea's past smeared in blood has helped spare its people spilling more blood fighting for democracy.</p>
+            </div>
+          </div>
+        
+          <!-- 오른쪽: 한글 소개 -->
+          <div class="column is-one-third ko">
+            <p>안녕하세요! 저는 대한민국 서울에서 활동하는 데이터 기자 정슬기입니다. 데이터와 그래픽을 활용해 우리 사회에서 복잡하고 종종 오해받는 문제들에 대한 이야기를 전달합니다. 처음에는 지역 사회 소식지를 만들고, 공공 보건 지침에 대한 실시간 정보를 작성하는 것으로 글쓰기를 시작했습니다. 올 가을 컬럼비아 대학교 데이터 저널리즘 대학원 프로그램에 진학해 2026년 여름에 졸업할 예정입니다.</p>
+        
+            <p>저는 작업을 통해 한국을 둘러싼 긴급한 질문과 주제들에 대한 데이터 기반 통찰을 담으려고 합니다. 그 주제로는 북한과의 관계, 엔터테인먼트 산업에서의 대표성 문제, 그리고 문학 속 역사와 기억이 한국 미래를 어떻게 형성하는지에 대한 내용 등이 있습니다.</p>
+        
+            <p>저는 한국 사회의 모든 지역사회와 공동체에 영향을 미치는 현재의 문제들에 열정을 가지고 있습니다. 특히 자주 어둠에 묻혀지는 문제들에 관심을 가지고 있습니다. 작업 의뢰, 출연 요청 및 대화 요청은 <a href="mailto:seulgi.jung1109@gmail.com">seulgi.jung1109@gmail.com</a>으로 해주세요.</p>
+          </div>
+        </div>        
   </div>
 
   <script>
