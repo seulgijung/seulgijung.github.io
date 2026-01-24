@@ -1,87 +1,288 @@
-
 body {
-    max-width: 100%;
-    background: #f7e0db;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 0;
+	background-color: #fff;
 }
 
 .story {
-    max-width: 940px;
-    margin: 0 auto 0 auto;
-    padding-bottom: 400px;
+	max-width: 1200px;
+	margin: 50px auto 0 auto;
 }
 
+.column {
+	max-width: 800px;
+	margin: 20px auto;
+}
+
+@media screen and (max-width: 768px) {
+	.column {
+	  margin: 20px 10px;
+	  text-align: left;
+	}
+  }
+  
+/* Typography */
 h1 {
-    font-family: 'cabin', sans-serif;
-    padding-top: 80px;
-} 
-
-h2 {
-    white-space: pre;
-    font-family: 'cabin', sans-serif;
-    font-size: 15px;
-    text-align: right;
-    padding-bottom: 30px;
-    color: rgb(53, 59, 53);
+	font-size: 30px;
+	line-height: 1.1;
+	font-family: 'cabin', sans-serif;
 }
 
-h3 {
-    /* padding: 10px 50px 10px 300px; */
-    font-family: 'cabin', sans-serif;
-    font-size: 20px;
-    padding: 30px auto 30px auto;
+h5 {
+	font-size: 18px;
+	font-family: 'cabin', sans-serif;
+	margin-bottom: 10px;
 }
 
 p {
-    font-size: 15px;
-    padding-top: 10px;
-    margin: 0 auto 20px auto;
+	font-size: 16px;
+	line-height: 1.25;
+	font-family: 'cabin', sans-serif;
 }
 
-.columns {
-    
+.bio {
+	margin-top: 25px;
+	margin-bottom: 15px;
 }
 
-/* 1/3 컬럼에서 이미지가 넘치지 않도록 */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+.byline {
+	text-align: center;
+	font-weight: bold;
+	font-family: 'cabin', sans-serif;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.date {
+	font-weight: normal;
+	padding-left: 20px;
+}
+
+.description {
+	font-size: 14px;
+	font-family: 'cabin', sans-serif;
+}
+
+.source {
+	font-size: 14px;
+	opacity: 0.6;
+}
+
+.graphictitle {
+	font-size: 22px;
+	font-family: 'cabin', sans-serif;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+/* Links */
+a {
+	color: #676a47;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #adc1a5;
+}
+
+/* Contact and Links Styling */
+.contact {
+	font-size: 16px;
+	line-height: 1.25;
+	font-family: 'cabin', sans-serif;
+	color: #676a47;
+}
+
+.links {
+	font-size: 19px;
+	line-height: 1.25;
+	font-family: 'cabin', sans-serif;
+	color: #676a47;
+}
+
+/* Cards and Dividers */
+.card {
+	margin-bottom: 20px;
+}
+
+hr {
+	border-style: dotted;
+	border-width: 1px;
+	color: #ccc;
+	width: 100%;
+}
+
+.last {
+	margin-bottom: 100px;
+}
+
+.column.graphic {
+	margin-bottom: 40px;
+	margin-top: 40px;
+}
+
+/* Label Colors */
+.label1 {
+	background-color: #99cc99;
+}
+
+.label2 {
+	background-color: #ffcc66;
+}
+
+.label3 {
+	background-color: #fc8e62;
+}
+
+/* Responsive iframe wrapper */
+.responsive-iframe-container {
+	position: relative;
+	overflow: hidden;
+	padding-top: 85%;
+	/* 16:9 ratio */
+}
+
+.responsive-iframe-container iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.portfolio-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	gap: 30px;
+	margin: 40px auto;
+	max-width: 1200px;
+	padding: 0 10px;
   }
+  
+  .portfolio-card {
+	flex: 1 1 300px;
+	max-width: 350px;
+	text-align: left;
+	font-family: 'cabin', sans-serif;
+  }
+  
+  .image-wrapper {
+	aspect-ratio: 4 / 3; /* or 4 / 3, 1 / 1, etc. */
+	overflow: hidden;
+	border-radius: 0px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  
+  
+  .image-wrapper:hover {
+	transform: scale(1.015) translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+  
+  .image-wrapper img {
+	width: 100%;
+	height: auto;
+	display: block;
+  }
+  
+  
+  .portfolio-card h3 {
+	font-size: 18px;
+	margin: 10px 0 5px 0;
+	color: #333;
+  }
+  
+  .portfolio-card p {
+	font-size: 14px;
+	margin: 0;
+	color: #555;
+  }
+  
+  /* Responsive: stack cards on smaller screens */
+  @media screen and (max-width: 768px) {
+	.portfolio-grid {
+	  flex-direction: column;
+	  align-items: center;
+	}
+  
+	.portfolio-card {
+	  width: 100%;
+	  max-width: 500px;
+	}
+  }
+  
 
-  /* 모바일에서 표시 순서를 영문 소개(1) -> 기사(2) -> 한글 소개(3)로 보장하고 싶다면 */
-@media (max-width: 768px) {
-    .en { order: 1; }
-    .articles { order: 2; }
-    .ko { order: 3; }
+  /* Source label ("Mission Local") */
+  .source-label {
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #555;
+	margin: 15px 0 5px; /* <-- increased top margin here */
+	font-family: 'cabin', sans-serif;
+	padding-top: 15px;
+  }
+  
+  /* Title */
+  .portfolio-card h3 {
+	font-size: 18px;
+	margin: 0 0 8px;
+	color: #222;
+	font-family: 'cabin', sans-serif;
+	padding-top: 5px;
+  }
+  
+  /* Description paragraph */
+  .portfolio-card .description {
+	font-size: 14px;
+	color: #444;
+	margin-bottom: 10px;
+	line-height: 1.4;
+	font-family: 'cabin', sans-serif;
+  }
+  
+  /* Tag list container */
+  .tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin-top: 5px;
+  }
+  
+  /* Individual tag */
+  .tag {
+	background-color: #e4ede4;
+	font-size: 12px;
+	padding: 4px 8px;
+	border-radius: 12px;
+	font-family: 'cabin', sans-serif;
+	white-space: nowrap;
+	transition: background-color 0.2s;
   }
   
 
 
-/* Style the buttons that are used to open and close the accordion panel */
-.accordion {
-    font-family: 'cabin', sans-serif;
-    font-size: x-large;
-    background-color: rgb(248, 236, 242);
-    color: #4A4A4A;
-    cursor: pointer;
-    /* padding: 10px; */
-    /* width: 100%; */
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-    margin-bottom: 20px;
-}
+  .portfolio-grid a {
+	text-decoration: none;       /* removes underline */
+	color: inherit;              /* keeps text color consistent */
+	display: block;              /* makes the entire card clickable */
+  }
   
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .accordion:hover {
-    background-color: rgb(255, 134, 195);
-}
+  .image-wrapper video {
+	width: 100%;
+	height: auto;
+	display: block;
+	object-fit: cover;
+	border-radius: 8px;
+  }
   
-  /* Style the accordion panel. Note: hidden by default */
-.panel {
-    padding: 0 18px;
-    background-color: rgb(248, 236, 242);
-    display: none;
-    overflow: hidden;
-}
+  footer {
+	text-align: center;
+	margin-top: 40px; /* optißnal: adds breathing room above */
+	font-family: 'cabin', sans-serif;
+	font-size: 14px;
+	color: #555;
+  }
