@@ -1,0 +1,55 @@
+.story {
+	max-width: 1200px;
+/*	background: red;*/
+	margin: 50px auto 0px auto;
+}
+
+.column {
+	max-width: 600px;
+/*	background: green;*/
+	margin: 0 auto 20px auto;
+}
+
+h1 {
+	text-align: center;
+	font-size: 56px;
+	line-height: 1.1;
+	font-weight: 600;
+	font-family: 'Roboto Serif', serif;
+}
+
+.byline {
+	text-align: center;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.date {
+	font-weight: normal;
+	padding-left: 20px;
+}
+
+.graphic {
+	background: pink;
+	height: 400px;
+	margin-bottom: 20px;
+}
+
+p {
+	font-size: 19px;
+	line-height: 34px;
+	font-family: 'Roboto Serif', serif;
+}
+
+h3 {
+	font-size: 22px;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+}
+
+.source {
+	font-size: 14px;
+	opacity: .6;
+}

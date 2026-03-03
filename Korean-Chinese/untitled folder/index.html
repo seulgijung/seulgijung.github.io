@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="module" src="main.js" defer></script>
+	<title>Korean Chinese</title>
+</head>
+<body>
+
+	<div class="story">
+		<h1 class="column">Korean Chinese: Once Compatriots, Now Targeted of Xenophobia</h1>
+		<p class="column byline">
+			<a class="link" href="https://seulgijung.github.io/">By Seulgi Jung</a><span class="date">July 25, 2023</span>
+		</p>
+		<br>	
+		<p class="column">
+			South Korea is one of the countries in which reading news via online channels is the most common way and, of course, has its own unique way of online news consumption. Search engine companies like Naver, the country's biggest search engine, run its own online news platform by curating articles provided from a variety of sources alongside open comment sections. The corporates neglect the comment sections, easily plagued by inappropriate and hateful remarks. Cut to the chase, I recently found some interesting phenomena in those remarks, commenters of which accuse one another of “Joseonjok" — a term coined by Joseon the last dynasty of South Korea and Jok meaning ethnic group — saying they are attempting to overturn the public opinion when other’s opinions are not in line with theirs.
+		</p>
+		<div class="graphic wide">
+			<div class="chart-wrapper">
+				<div id="line-chart" class="chart"></div>
+			</div>
+		</div>
+		<p class="source"> The data was collected from <a href="https://mlbpark.donga.com/mp" target="_blank" rel="noopener noreferrer">MLBPARK</a>, an online baseball fan community with predominantly far-right male users. This chart shows that the usage of the word, Joseonjok, skyrocketted nearly 5 times in 2020 and still stayed in the similar range of volume, around 3,500, as of 2022. </p>
+		<p class="column">
+			Defined as Chinese of Korean descent who are regarded as one of the 50 minor ethnic tribes, It is technically not a derogatory name. Before there was Joseonjok, they were called “Dongpo", the literal definition of which is siblings who were born to the same mother, widely used to call Koreans living overseas. It has been replaced with Joseonjok because of immensely increasing antipathy against inclusivity within the term and China over the years. The chart is a clear example that shows the surge in usage volume of the term since 2020.
+		</p>
+		<p class="column">
+			As you might have noticed from the chart, it was not only about South Korea. Pew Research Center said that distasteful views of China had reached its unprecedented peak in the wake of COVID-19 in many countries for supposedly mishandling with COVID-19. 
+		</p>
+		<p class="column">
+			But views have continued to sour and today, and unfavorable views of China are at a historic high of 80% according to 2022 research by the institution. South Koreans answered China’s involvement in politics in their country as the top concern while China’s policies on human rights were described as a very serious problem more often than other issues in other countries. 
+		</p>
+		<p class="column">
+			Does the Chinese government interfere with South Korea’s politics? Why does this hatred flow down to Chinese expatriates we once believed to share a uniform ethnic identity then? But there might be two more possible reasons for it.
+		</p>
+
+		<h3 class="column">China Gate and Never Verified Claims</h3>
+		<p class="column">
+			It was March 2020, when harsh feelings against China were soaring for 2019 novel coronavirus, one anonymous user in Ilbe, a notoriously far right anything-goes forum, claimed that they are part of Chinese Koreans ordered to do online operations of dividing the public by writing pro-China posts and comments, which was quickly picked up by traditionally conservative news media and made headlines.
+		</p>
+		<p class="column">
+			The internet companies denied the accusation and released records of Chinese IP being accounted for only 0.5%. Former United Future Party, current ruling party renamed People Power Party, stood firm and went further with the next step by filing a criminal complaint in March 2020, the result of which has not been announced yet until 3 years later at this moment.
+		</p>
+
+		<h3 class="column">First Visible Migrants in An Intensely Exclusive Society</h3>
+		<p class="column">
+			Many scholars stated that the mechanism of biases and discrimination works differently here in Korea: It was often pointed out that Koreans adopted lenses of orientalism in the beginning through which perceiving the world and deeply internalized materialism played a big role too. But they pointed out that the reason Korean Chinese are especially targeted is because they make up the largest number of immigrants, being the most visible outsiders experiencing racism barely surfaced or addressed in the closed society before any other groups of immigrants do.
+		</p>
+		<p class="column">
+			For decades, immigrants had been nearly invisible to Koreans. They were thought to only exist in factories and farm fields in rural areas, taking labor-intensive or low-waged jobs. Korean Chinese broke the tacit rule, flooding and blending into a long-forbidden space since the Act on the Immigration and Legal Status of Overseas Korean was introduced. They have a huge advantage, being fluent in Korean, to be widely hailed by mid-to-small sized companies and industries suffering shortage of labor force.
+		<p class="column">
+			As of last year, 4.37% of the population accounted for foreign aliens residing in Korea, out of which 37.8% are Chinese, followed by Vietnam, Thailand, the U.S. and so on. Though Chinese take up the biggest chunk of the foreign residents, it was only 1.65% of the population.
+		</p>
+
+		<h3 class="column">How media promoted hatred against Joseonjok</h3>
+		<p class="column">
+			From 2010 through 2019, South Korean culture had a renaissance. The country started to emerge as a culture house in the early 2000s, not only producing creative k-pop music and original shows but also well-regarded films. In particular, for the film industry, the 2010s era seemed to decorate its finale with international awards and prizes when Parasite, a satire movie about capitalism by Bong Joon-Ho, swept the Canne and Oscar.
+		</p>
+		<section id="scrolly" class="scrolly-container">
+			<div class="sticky-thing">
+				<img src="daelim.jpeg">
+			</div>
+			<div class="steps-container">
+				<div class="step" id="step1">
+				    <p class="column">
+						Presenting itself with artsy and socially influential work, the industry was blamed for insensitive portrayal of immigrants at the same time. In 2017, Josenjok migrants group made a collective statement to plead suspension of screening of Midnight Runners from theaters, saying it fueled baseless hatred toward Joseonjok and aroused unnecessary tension between Koreans and Chinese. In the movie, Daelim-dong, where predominantly Joseonjok resided in real life, was described as a neighborhood plagued with such violent crimes that even police can’t dare to control.
+					</p>
+				</div>
+
+<!-- Generated by ai2html v0.113.0 - 2023-09-25 18:36 -->
+<!-- ai file: posters.ai -->
+<style media="screen,print">
+	#g-posters-box ,
+	#g-posters-box .g-artboard {
+		margin:0 auto;
+	}
+	#g-posters-box p {
+		margin:0;
+	}
+	#g-posters-box .g-aiAbs {
+		position:absolute;
+	}
+	#g-posters-box .g-aiImg {
+		position:absolute;
+		top:0;
+		display:block;
+		width:100% !important;
+	}
+	#g-posters-box .g-aiSymbol {
+		position: absolute;
+		box-sizing: border-box;
+	}
+	#g-posters-box .g-aiPointText p { white-space: nowrap; }
+	#g-posters-Artboard_1 {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-posters-Artboard_1 p {
+		font-family:georgia,'times new roman',times,serif;
+		line-height:22px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:18px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-posters-Artboard_1 .g-pstyle0 {
+		font-weight:bold;
+		line-height:37px;
+		height:37px;
+		font-size:31px;
+	}
+	#g-posters-Artboard_1 .g-pstyle1 {
+		height:22px;
+	}
+
+</style>
+
+<div id="g-posters-box" class="ai2html">
+
+	<!-- Artboard: Artboard_1 -->
+	<div id="g-posters-Artboard_1" class="g-artboard" style="max-width: 1115px;max-height: 809px" data-aspect-ratio="1.378" data-min-width="0">
+<div style="padding: 0 0 72.5561% 0;"></div>
+		<img id="g-posters-Artboard_1-img" class="g-posters-Artboard_1-img g-aiImg" alt="" src="posters-Artboard_1.jpg"/>
+<!-- Generator: Adobe Illustrator 27.7.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg class="g-posters-Artboard_1-interactions-img g-aiImg" version="1.2" baseProfile="tiny" id="g-posters-Artboard_1-interactions-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 1115 809" overflow="visible" xml:space="preserve">
+<g>
+	<polygon id="negative" style="opacity:0.3;" fill="#FFA9C4" stroke="#FFA9C4" stroke-width="4" stroke-miterlimit="10" points="414,133 
+		1005.831,133 1004.914,755 265.589,755 267,548 414,548.656 	"/>
+	<polygon id="positive" style="opacity:0.3;" fill="#80C2D6" stroke="#64B9CC" stroke-width="4" stroke-miterlimit="10" points="414,133 
+		109.946,133 111,755 265.589,755 267,548 414,548.656 	"/>
+</g>
+<style>
+#g-posters-Artboard_1-interactions-img rect, #g-posters-Artboard_1-interactions-img circle, #g-posters-Artboard_1-interactions-img path, #g-posters-Artboard_1-interactions-img line, #g-posters-Artboard_1-interactions-img polyline, #g-posters-Artboard_1-interactions-img polygon { vector-effect: non-scaling-stroke; }
+</style>
+</svg>
+
+		<div id="text" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:10.9578%;margin-top:-29.6px;left:10.7853%;width:841px;">
+			<p class="g-pstyle0">How media promoted hatred against Joseonjok</p>
+			<p class="g-pstyle1">Produced in the 2010s, the total 18 mainstream movies featuring Joseonjok characters, were classified  </p>
+		</div>
+	</div>
+
+</div>
+
+<!-- End ai2html - 2023-09-25 18:36 -->
+
+
+
+
+
+
+
+
+
+<!-- ai2html goes above this line -->
+
+          </div>
+        </div>
+
+        <div class="scrolly-overlay">
+          <div class="step" id="step-zero">
+            <p>18 movies were produced in the 2010s with Korean Chinese characters featured.</p>
+          </div>
+          <div class="step" id="step-one">
+            <p>Out of which <span style="background-color:#D9ECF3">only 5 movies</span> depicted them as "normal" people or in a more diverse way, but not in a way of seeing them as friendly ordinary neighbors.</p>
+          </div>
+          <div class="step" id="step-two">
+            <p id="pink"><span style="background-color:#FFE5ED">The other 15 films</span> portrayed them as villains, hit-men, traffickers, gangsters, thieves, and illegal aliens.</p>
+          </div>
+        </div>
+      </section>
+
+    <script>
+      
+      /* Scrollytelling code goes under here */
+      d3.select("#positive").classed('hidden', true)
+      d3.select("#negative").classed('hidden', true)
+
+      d3.select("#step-zero").on('stepin', function(e) {
+        // undo the changes from step one
+        d3.select("#positive").classed('hidden', true)
+        d3.select("#negative").classed('hidden', true)
+      })
+
+      d3.select("#step-one").on('stepin', function(e) {
+        console.log("Got to step one")
+        // undo changes from dtep two
+        d3.select("#positive").classed('hidden', true)
+        d3.select("#negative").classed('hidden', true)
+
+        // do changes for step one
+        d3.select("#positive").classed('hidden', false)
+      })
+
+      d3.select("#step-two").on('stepin', function(e) {
+
+        // undo changes from step one
+        d3.select("#positive").classed('hidden', true)
+        d3.select("#negative").classed('hidden', true)
+
+        // do changes for step two
+        console.log("Got to step two")
+        d3.select("#negative").classed('hidden', false)
+      })
+
+      d3.select("#step-three").on('stepin', function(e) {
+        //undo changes from step two
+        d3.select("#negative").classed('hidden', true)
+      })
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+			
+				<div class="step" id="step4">
+					<p class="column">
+						The perception that Joseonjok is highly involved with crimes, actually, does not align with reality. Published by the National Police Agency, the 2022 Crime Statistics shows that chinese crime rate is 1.2%, even if narrowed down to violent crime, it’s 1.17. It’s hard to conclude that the number of crimes committed by Chinese is distinctly high given that 1.6% of the population is Chinese.
+					</p>
+				</div>
+				<div class="step" id="step5">
+					<p class="column">
+						“In fact, in society, minorities are often caught up in bad things. Even in Korea, people from that side of the world often commit violent crimes, which is why Korean movies often feature such settings,” Kwak Kyung-taek, director of Resurrected Victims, a movie featuring a Joseonjok character as a killer, answered about the controversy of repeatedly mispresenting Joseonjok surrounding the movie in a 2017 interview. “As a storyteller, I think I had no choice. I couldn’t give up on things like Chinatown as a fictional space in that sense. A movie has to be plausible, and if you think about these things too much, you can’t do that. If I have the opportunity to tell their story someday, I want to do it right, and I’ll make up for it then,” he added.
+					</p>
+				</div>				
+			</div>
+		</section>
+	</div>
+
+	<script type='text/javascript' src="script.js"></script>
+	<script>
+		//  scrollytelling code goes here
+		d3.select("#step1").on('stepin', function () {
+			d3.select(".sticky-thing img").attr("src", "daelim.jpeg")
+		})
+		d3.select("#step2").on('stepin', function () {
+			d3.select(".sticky-thing img").attr("src", "nv highlight.png")
+		})
+		d3.select("#step3").on('stepin', function () {
+			d3.select(".sticky-thing img").attr("src", "v highlihgt.png")
+		})
+		d3.select("#step4").on('stepin', function () {
+			d3.select(".sticky-thing img").attr("src", "daelim2.jpeg")
+		})
+		d3.select("#step5").on('stepin', function () {
+			d3.select(".sticky-thing img").attr("src", "daelime3.jpeg")
+		})
+	</script>
+	<script>
+		const scroller = scrollama()
+
+		scroller
+			.setup({
+				step: "#scrolly .steps-container .step",
+				offset: 0.75,
+				debug: false,
+			})
+			.onStepEnter(function ({ element, index, direction }) {
+				const event = new CustomEvent("stepin", { detail: { direction: direction } })
+				element.dispatchEvent(event)
+			})
+			.onStepExit(function ({ element, index, direction }) {
+				const event = new CustomEvent("stepout", { detail: { direction: direction } })
+				element.dispatchEvent(event)
+			})
+
+		window.addEventListener("resize", scroller.resize)
+	</script>
+
+</body>
+</html>
