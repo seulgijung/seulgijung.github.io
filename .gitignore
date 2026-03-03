@@ -156,3 +156,18 @@ cython_debug/
 **/.Rhistory
 .RData
 **/.RData
+
+# binaries / big exports not needed for published page
+**/*.zip
+**/*.ai
+**/*.psd
+**/*.docx
+**/*.pdf
+**/*.RData
+**/*.Rhistory
+
+# optional: ignore huge raw dumps
+**/*_raw
+
+# macOS
+.DS_Store
