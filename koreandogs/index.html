@@ -60,6 +60,26 @@
             margin: 0 auto;
         }
 
+        .full-width figure {
+            text-align: center;
+        }
+
+        .graphic figure {
+            margin: 2em 0 0 0;
+        }
+
+        .graphic figure img {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .graphic figcaption {
+            text-align: left;
+            margin-top: 0.5em;
+        }
+
         #footer {
             text-align: center;
             padding: 4em;
@@ -124,16 +144,28 @@
         </div>
         <div class="graphic">
             <div class="flourish-embed flourish-chart" data-src="visualisation/25976685">
-                <iframe title="The number of dogs coming to the US and Canada jumped in post pandemic" aria-label="Dot Plot" id="datawrapper-chart-MMfTp" src="https://datawrapper.dwcdn.net/MMfTp/8/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="432" data-external="1"></iframe><script type="text/javascript">window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}});</script>
+                <iframe title="The number of dogs coming to the US and Canada jumped in post pandemic"
+                    aria-label="Dot Plot" id="datawrapper-chart-MMfTp" src="https://datawrapper.dwcdn.net/MMfTp/8/"
+                    scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;"
+                    height="432" data-external="1"></iframe>
+                <script
+                    type="text/javascript">window.addEventListener("message", function (a) { if (void 0 !== a.data["datawrapper-height"]) { var e = document.querySelectorAll("iframe"); for (var t in a.data["datawrapper-height"]) for (var r, i = 0; r = e[i]; i++)if (r.contentWindow === a.source) { var d = a.data["datawrapper-height"][t] + "px"; r.style.height = d } } });</script>
+
+                <figure>
+                    <img src="chart_2.gif">
+                    <figcaption>This is a ggplot version of R.</figcaption>
+                </figure>
             </div>
-            <div class="text-box">
-                <p class="note">The data also highlights that an unprecedented number of dogs are shipped to the two
-                    North American countries for three years since the COVID-19 pandemic broke in 2020—though it
-                    includes dogs that were simply relocated, not necessarily adopted—driven in large part by an
-                    increased demand for companionship to alleviate a sense of isolation.</p>
-                <br>
-                <p>Created by Seulgi Jung, the chart used the data from <a href="https://data.mafra.go.kr/opendata/data/indexOpenDataDetail.do?data_id=20181019000000000968">Ministry of Agriculture, Food and Rural Affairs (MAFRA) of Korea</a></p>
-            </div>
+        </div>
+        <div class="text-box">
+            <p class="note">The data also highlights that an unprecedented number of dogs are shipped to the two
+                North American countries for three years since the COVID-19 pandemic broke in 2020—though it
+                includes dogs that were simply relocated, not necessarily adopted—driven in large part by an
+                increased demand for companionship to alleviate a sense of isolation.</p>
+            <br>
+            <p>Created by Seulgi Jung, the chart used the data from <a
+                    href="https://data.mafra.go.kr/opendata/data/indexOpenDataDetail.do?data_id=20181019000000000968">Ministry
+                    of Agriculture, Food and Rural Affairs (MAFRA) of Korea</a></p>
         </div>
 </body>
 
