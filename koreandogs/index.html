@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>A Growing Number of Korean Dogs Find a New Life in North America</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: rgb(255, 255, 255);
+        }
+
+        /* Make the page 700px wide, centered */
+        .container {
+            max-width: 700px;
+            width: 100%;
+            margin: 4em auto;
+        }
+
+        body {
+            font-family: "Roboto Serif";
+        }
+
+        h1 {
+            width: 100%;
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 3em);
+            text-wrap: balance;
+            margin: 1em 0;
+        }
+
+        .byline {
+            width: 90%;
+            text-align: right;
+            font-size: clamp(0.8rem, 2vw, 1.3rem);
+        }
+
+        p {
+            text-align: center;
+            font-size: 16px;
+            margin: 1em 0;
+        }
+
+        .note {
+            font-size: 20px;
+        }
+
+        .graphic {
+            flex: 1;
+            max-width: 100%;
+            margin: 3em auto;
+            /* 기존 margin: auto; 를 이걸로 교체 */
+        }
+
+        .graphic iframe {
+            display: block;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        #footer {
+            text-align: center;
+            padding: 4em;
+            /* background-color: #f0f1ff; */
+            border-top: solid white 5px;
+        }
+
+        /* .content-row { display: flex; gap: 60px; align-items: flex-start; } */
+        .text-box {
+            flex: 1;
+            text-align: left;
+            margin-top: 70px;
+        }
+
+        .text-box p {
+            text-align: left;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 900px) {
+
+            .container {
+                padding: 0 20px;
+                /* 양옆 여백 */
+                box-sizing: border-box;
+            }
+
+            .graphic,
+            .text-box {
+                max-width: 100%;
+                margin: 1em 0;
+            }
+
+            p {
+                font-size: 15px;
+            }
+
+            .note {
+                font-size: 19px;
+            }
+
+            .text-box {
+                padding: 0 20px;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>A Growing Number of Korean Dogs Find a New Life in North America</h1>
+        <p class="byline">March 2025, <a href="https://seulgijung.github.io">Seulgi Jung</a></p>
+        <!-- <div class="content-row"> -->
+        <div class="text-box">
+            <p class="note">A lot more dogs are flying from South Korea to the U.S. than over ten years ago, according
+                to data from Korea’s Ministry of Agriculture, Food and Rural Affairs. The number of dogs transported to
+                the United States from 2014 to 2025 more than doubled, and the figure for Canada increased more than
+                fivefold.</p>
+        </div>
+        <div class="graphic">
+            <div class="flourish-embed flourish-chart" data-src="visualisation/25976685">
+                <iframe title="The number of dogs coming to the US and Canada jumped in post pandemic" aria-label="Dot Plot" id="datawrapper-chart-MMfTp" src="https://datawrapper.dwcdn.net/MMfTp/8/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="432" data-external="1"></iframe><script type="text/javascript">window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}});</script>
+            </div>
+            <div class="text-box">
+                <p class="note">The data also highlights that an unprecedented number of dogs are shipped to the two
+                    North American countries for three years since the COVID-19 pandemic broke in 2020—though it
+                    includes dogs that were simply relocated, not necessarily adopted—driven in large part by an
+                    increased demand for companionship to alleviate a sense of isolation.</p>
+                <br>
+                <p>Created by Seulgi Jung, the chart used the data from <a href="https://data.mafra.go.kr/opendata/data/indexOpenDataDetail.do?data_id=20181019000000000968">Ministry of Agriculture, Food and Rural Affairs (MAFRA) of Korea</a></p>
+            </div>
+        </div>
+</body>
+
+</html>
