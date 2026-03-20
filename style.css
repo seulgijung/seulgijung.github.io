@@ -17,11 +17,103 @@ body {
 
 @media screen and (max-width: 768px) {
 	.column {
-	  margin: 20px 10px;
-	  text-align: left;
+		margin: 20px 10px;
+		text-align: left;
 	}
+}
+
+
+
+
+
+
+/* kkong photo *//* kkong photo *//* kkong photo *//* kkong photo *//* kkong photo *//* kkong photo *//* kkong photo */
+/* content-row: side-by-side on desktop */
+.content-row {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.text-column {
+  flex: 1;
+}
+
+.carousel-wrapper {
+  flex-shrink: 0;
+  width: 320px;
+}
+
+/* kkong photo */
+.carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;		/* 4 / 3 if it is crosswise */
+  overflow: hidden;
+  border-radius: 0px;	/*	round the edges	*/
+}
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.carousel-img.active {
+  display: block;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+.carousel-caption {
+  font-size: 13px;
+  color: #777;
+  text-align: left;
+  margin-top: 6px;
+  font-family: 'cabin', sans-serif;
+}
+
+/* mobile: stack vertically */
+@media screen and (max-width: 768px) {
+  .content-row {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px 10px;
   }
-  
+
+  .carousel-wrapper {
+    width: 100%;
+    max-width: 350px;
+	margin: 0 auto
+  }
+}
+/* kkong photo *//* kkong photo *//* kkong photo *//* kkong photo *//* kkong photo *//* kkong photo *//* kkong photo */
+
+
+
+
+
 /* Typography */
 h1 {
 	font-size: 30px;
@@ -150,6 +242,7 @@ hr {
 	width: 100%;
 	height: 100%;
 }
+
 .portfolio-grid {
 	display: flex;
 	flex-wrap: wrap;
@@ -158,103 +251,105 @@ hr {
 	margin: 40px auto;
 	max-width: 1200px;
 	/* padding: 0 10px; */
-  }
-  
-  .portfolio-card {
-	flex: 1 1 300px;
+}
+
+.portfolio-card {
+	flex: 0 1 350px;
 	max-width: 350px;
 	text-align: left;
 	font-family: 'cabin', sans-serif;
-  }
-  
-  .image-wrapper {
-	aspect-ratio: 4 / 3; /* or 4 / 3, 1 / 1, etc. */
+}
+
+.image-wrapper {
+	aspect-ratio: 4 / 3;
+	/* or 4 / 3, 1 / 1, etc. */
 	overflow: hidden;
 	border-radius: 0px;
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 	transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-  
-  
-  .image-wrapper:hover {
+}
+
+
+.image-wrapper:hover {
 	transform: scale(1.015) translateY(-2px);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  }
-  
-  .image-wrapper img {
+}
+
+.image-wrapper img {
 	width: 100%;
 	height: auto;
 	display: block;
-  }
-  
-  
-  .portfolio-card h3 {
+}
+
+
+.portfolio-card h3 {
 	font-size: 18px;
 	margin: 10px 0 5px 0;
 	color: #333;
-  }
-  
-  .portfolio-card p {
+}
+
+.portfolio-card p {
 	font-size: 14px;
 	margin: 0;
 	color: #555;
-  }
-  
-  /* Responsive: stack cards on smaller screens */
-  @media screen and (max-width: 768px) {
-	.portfolio-grid {
-	  flex-direction: column;
-	  align-items: center;
-	  margin: auto;
-	}
-  
-	.portfolio-card {
-	  width: 100%;
-	  max-width: 500px;
-	}
-  }
-  
+}
 
-  /* Source label ("Mission Local") */
-  .source-label {
+/* Responsive: stack cards on smaller screens */
+@media screen and (max-width: 768px) {
+	.portfolio-grid {
+		flex-direction: column;
+		align-items: center;
+		margin: auto;
+	}
+
+	.portfolio-card {
+		width: 100%;
+		max-width: 500px;
+	}
+}
+
+
+/* Source label ("Mission Local") */
+.source-label {
 	font-size: 12px;
 	font-weight: bold;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 	color: #555;
-	margin: 15px 0 5px; /* <-- increased top margin here */
+	margin: 15px 0 5px;
+	/* <-- increased top margin here */
 	font-family: 'cabin', sans-serif;
 	padding-top: 15px;
-  }
-  
-  /* Title */
-  .portfolio-card h3 {
+}
+
+/* Title */
+.portfolio-card h3 {
 	font-size: 18px;
 	margin: 0 0 8px;
 	color: #222;
 	font-family: 'cabin', sans-serif;
 	padding-top: 5px;
-  }
-  
-  /* Description paragraph */
-  .portfolio-card .description {
+}
+
+/* Description paragraph */
+.portfolio-card .description {
 	font-size: 14px;
 	color: #444;
 	margin-bottom: 10px;
 	line-height: 1.4;
 	font-family: 'cabin', sans-serif;
-  }
-  
-  /* Tag list container */
-  .tag-list {
+}
+
+/* Tag list container */
+.tag-list {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 6px;
 	margin-top: 5px;
-  }
-  
-  /* Individual tag */
-  .tag {
+}
+
+/* Individual tag */
+.tag {
 	background-color: #e4ede4;
 	font-size: 12px;
 	padding: 4px 8px;
@@ -262,29 +357,32 @@ hr {
 	font-family: 'cabin', sans-serif;
 	white-space: nowrap;
 	transition: background-color 0.2s;
-  }
-  
+}
 
 
-  .portfolio-grid a {
-	text-decoration: none;       /* removes underline */
-	color: inherit;              /* keeps text color consistent */
-	display: block;              /* makes the entire card clickable */
-	margin: auto;
-  }
-  
-  .image-wrapper video {
+
+.portfolio-grid a {
+	text-decoration: none;
+	/* removes underline */
+	color: inherit;
+	/* keeps text color consistent */
+	display: block;
+	/* makes the entire card clickable */
+}
+
+.image-wrapper video {
 	width: 100%;
 	height: auto;
 	display: block;
 	object-fit: cover;
 	border-radius: 8px;
-  }
-  
-  footer {
+}
+
+footer {
 	text-align: center;
-	margin-top: 40px; /* optißnal: adds breathing room above */
+	margin-top: 40px;
+	/* optißnal: adds breathing room above */
 	font-family: 'cabin', sans-serif;
 	font-size: 14px;
 	color: #555;
-  }
+}
