@@ -8,7 +8,7 @@ function updateCarousel() {
   images.forEach(img => img.classList.remove('active'));        // => means an arrow function (abbreviated function); img is an arbitrary random name of function here, it works the same way when you call it potato; img is like a parameter A in for-A-in-B in python
   images[current].classList.add('active');      // .classList = a method to use in check(.contain = boolean type), add, or remove `class`; simply (de)attaching `active` decides whether an image displays since only `.carousel-img.active` = `display: block` in CSS; images[current] = images[0] = first cat photo displaying —> list grammar
 
-  leftArrow.style.display = current === 0 ? 'none' : 'block';   // leftArrow
+  leftArrow.style.display = current === 0 ? 'none' : 'block';   // leftArrow's CSS display property directly controlled in js
   rightArrow.style.display = current === images.length - 1 ? 'none' : 'block';
 }
 
