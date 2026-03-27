@@ -106,11 +106,15 @@ code {
 	body {
 		font-size: 18px;
 	}
-	
 	.header {
 	font-size: 13px;
 	padding: 0.5em;
 	margin: auto;
+	text-align: center;
+	}
+
+	.subhead {
+		font-size: 10px;
 	}
 
 	.content {
