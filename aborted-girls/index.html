@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Story template</title>
+    <title>Girl-slaughter: 37 Years of Sex-Selective Abortion in South Korea</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,9 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-    <link href="scrolly-styles.css" rel="stylesheet">
-    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.2.0/scrollama.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
 </head>
 
@@ -571,6 +568,7 @@
         </figure>
         <p>The analysis of average total birth sex ratio from 1997 through 2005 shows that the trend had been heavily spearheaded by Gyeongsang Province, with all five of its regions, including metropolitan cities like Daegu, topping the list.</p>
     </div>
+        <p class="subhead incolumn">About How Many Numbers of Girls Had Gone Missing</p>
 <style>
 .chart2-root {
   position: relative;
@@ -807,6 +805,10 @@
     }
   });
   steps.push({yi:-1, phase:'rect'});
+  steps.push({yi:-1, phase:'rect'});
+  steps.push({yi:-1, phase:'rect'});
+  steps.push({yi:-1, phase:'exit'});
+  steps.push({yi:-1, phase:'exit'});
   steps.push({yi:-1, phase:'exit'});
 
   var TOTAL = steps.length;
@@ -885,23 +887,30 @@
   /* ── Compute rectangle positions for each tile ── */
   // Center the rectangle in the viewport (or left-center for desktop with text)
   function getRectPositions(){
-    var rectW = RC * (RECT_TILE + RECT_GAP) - RECT_GAP;
-    var rectH = RR * (RECT_TILE + RECT_GAP) - RECT_GAP;
+    var tileSize = RECT_TILE;
+    var rectW = RC * (tileSize + RECT_GAP) - RECT_GAP;
+    var rectH = RR * (tileSize + RECT_GAP) - RECT_GAP;
     var vpW = sticky.clientWidth;
     var vpH = sticky.clientHeight;
 
-    // On mobile (narrow), center; on desktop, offset left to leave room for text
     var isMobile = vpW < 600;
     var rectLeft, rectTop;
     if (isMobile){
+      if (rectW > vpW - 20){
+        var availW = vpW - 20 + RECT_GAP;
+        var cellSize = availW / RC;
+        tileSize = Math.floor(cellSize - RECT_GAP);
+        if (tileSize < 2) tileSize = 2;
+        rectW = RC * (tileSize + RECT_GAP) - RECT_GAP;
+        rectH = RR * (tileSize + RECT_GAP) - RECT_GAP;
+      }
       rectLeft = (vpW - rectW) / 2;
-      rectTop = vpH * 0.15;
+      rectTop = vpH * 0.1;
     } else {
       rectLeft = (vpW - rectW) / 2 - 180;
       rectTop = (vpH - rectH) / 2;
     }
 
-    // Set spacer width for text positioning
     finSpacer.style.width = rectW + 'px';
     finSpacer.style.height = rectH + 'px';
 
@@ -910,8 +919,9 @@
       var rCol = i % RC;
       var rRow = Math.floor(i / RC);
       positions.push({
-        x: rectLeft + rCol * (RECT_TILE + RECT_GAP),
-        y: rectTop + rRow * (RECT_TILE + RECT_GAP)
+        x: rectLeft + rCol * (tileSize + RECT_GAP),
+        y: rectTop + rRow * (tileSize + RECT_GAP),
+        size: tileSize
       });
     }
     return positions;
@@ -1007,8 +1017,8 @@
         if (i < rectPos.length){
           t.el.style.left = rectPos[i].x + 'px';
           t.el.style.top  = rectPos[i].y + 'px';
-          t.el.style.width  = RECT_TILE + 'px';
-          t.el.style.height = RECT_TILE + 'px';
+          t.el.style.width  = rectPos[i].size + 'px';
+          t.el.style.height = rectPos[i].size + 'px';
         } else {
           t.el.style.opacity = '0';
         }
@@ -1092,114 +1102,11 @@
   } // init
 })();
 </script>
-<div class="footer">
+    <div class="footer">
         <div class="content">
-            <p>You can find the code for this template <a href="https://github.com/jsoma/page-templates/">here</a>.
-                Delete
-                these lines
-                when you use it, and don't forget to change the <code>title</code> tag!!!</p>
+            <p>Code can be found <a href="https://github.com/seulgijung/seulgijung.github.io/tree/main/aborted-girls"> here</a>.</p>
         </div>
     </div>
-    <style>
-        .hidden {
-            display: none;
-        }
-    </style>
-    <script>
-
-        function hideNote() {
-            // annotation: #path-1, #text-1, #path-2, #text-2
-            d3.select("#path-1").classed('hidden', true)
-            d3.select("#text-1").classed('hidden', true)
-            d3.select("#path-2").classed('hidden', true)
-            d3.select("#text-2").classed('hidden', true)
-        }
-
-        /* Scrollytelling code goes under here */
-        hideNote()
-
-        d3.select("#step-one").on('stepout', function (e) {
-            if (e.detail.direction === 'up') {
-                // undo the changes from step one
-                hideNote()
-            }
-        })
-
-        d3.select("#step-one").on('stepin', function (e) {
-            console.log("Got to step one")
-            // undo changes from step two
-            d3.selectAll("[data-name='africa'] path").style('stroke', 'none')
-
-            // do changes for step one
-            d3.select("#path-1").classed('hidden', false)
-            d3.select("#text-1").classed('hidden', false)
-            d3.select("#path-2").classed('hidden', false)
-            d3.select("#text-2").classed('hidden', false)
-        })
-
-        d3.select("#step-two").on('stepin', function (e) {
-
-            // undo changes from step one
-            hideNote()
-
-            // do changes for step two
-            console.log("Got to step two")
-            d3.selectAll("[data-name='africa'] path").style('stroke', 'black')
-        })
-
-        d3.select("#step-three").on('stepin', function (e) {
-            // undo changes from step two
-            d3.selectAll("[data-name='africa'] path").style('stroke', 'none')
-        })
-
-
-    </script>
-
-
-
-    <script>
-        /*************
-        
-        This is the JavaScript that makes the scrolly work 
-        
-        *************/
-
-        /* 
-        This part attaches a scroll to the element with id="scrolly-ai2html"    
-        */
-        (() => {
-            const scroller = scrollama()
-
-            scroller
-                .setup({
-                    parent: document.querySelector("#scrolly-ai2html"),
-                    step: ".step",
-                    offset: 0.6,
-                    debug: false,
-                })
-                .onStepEnter(function ({ element, index, direction }) {
-                    const event = new CustomEvent("stepin", { detail: { direction: direction } })
-                    element.dispatchEvent(event)
-                })
-                .onStepExit(function ({ element, index, direction }) {
-                    const event = new CustomEvent("stepout", { detail: { direction: direction } })
-                    if (direction === "up" && element.previousElementSibling) {
-                        const event = new CustomEvent("stepin", { detail: { direction: direction } })
-                        element.previousElementSibling.dispatchEvent(event)
-                    }
-                })
-
-            window.addEventListener("resize", scroller.resize)
-        })()
-
-    </script>
-    <style>
-        /* Change this to adjust the padding between steps */
-        .step {
-            margin-bottom: 70vh;
-        }
-    </style>
-
     <script type="text/javascript">
             (function () {
                 // only want one resizer on the page
@@ -1275,4 +1182,4 @@
     </script>
 </body>
 
-</html>
+</html> 

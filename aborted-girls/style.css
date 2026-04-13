@@ -11,24 +11,28 @@ body {
 }
 
 .header {
-    padding: 3em 0;
+    padding: 1em 0 1em 0;
     max-width: 800px;
+    margin: auto;
+}
+
+.byline {
+    text-align: right;
 }
 
 a {
-    color: #f05349;
+    color: #000000;
 }
 
 .footer {
-    background: #f4f4f4;
     text-align: center;
     font-size: 0.8em;
-    margin-top: 4em;
+    /* margin-top: 4em; */
     padding: 4em 0;
 }
 
 figure {
-    margin: 0;
+    margin: 1.5em 0;
     padding-bottom: 1.2em;
 }
 
@@ -48,6 +52,14 @@ h1 {
 
 .subhead {
     font-family: 'Lora', Georgia, serif;
+}
+
+.subhead.incolumn {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px
 }
 
 iframe,
@@ -78,8 +90,8 @@ iframe {
 
 .wide-chart {
     max-width: 100%; 
-    margin: 0 auto;
-    padding: 0 1em;
+    margin: 0 0 2em 0;
+    padding: 2em 1em;
 }
 
 code {
@@ -92,6 +104,12 @@ code {
     body {
         font-size: 18px;
     }
+
+    .header {
+    padding: 3em 0 2em 0;
+    font-size: 0.6em;
+    margin: auto 1em
+}
 
     .content {
         padding-left: 0.5em;
