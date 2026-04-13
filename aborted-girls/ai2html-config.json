@@ -1,0 +1,52 @@
+{
+    "fonts": [
+        {
+            "aifont": "GeorgiaPro-Bold",
+            "family": "GeorgiaPro-Bold",
+            "weight": "700",
+            "style": ""
+        },
+        {
+            "aifont": "Roboto-Medium",
+            "family": "Roboto-Medium",
+            "weight": "400",
+            "style": ""
+        },
+                {
+            "aifont": "Roboto-Bold",
+            "family": "Roboto-Bold",
+            "weight": "700",
+            "style": ""
+        },
+        {
+            "aifont": "Helvetica",
+            "family": "Helvetica",
+            "weight": "400",
+            "style": ""
+        },
+        {
+            "aifont": "Helvetica-Light",
+            "family": "Helvetica-Light",
+            "weight": "400",
+            "style": ""
+        },
+        {
+            "aifont": "Helvetica-Regular",
+            "family": "Helvetica-Regular",
+            "weight": "400",
+            "style": ""
+        },
+        {
+            "aifont": "HelveticaNeue-Italic",
+            "family": "HelveticaNeue-Italic",
+            "weight": "400",
+            "style": ""
+        },
+                {
+            "aifont": "Helvetica-Bold",
+            "family": "Helvetica-Bold",
+            "weight": "700",
+            "style": ""
+        }
+    ]
+}

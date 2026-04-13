@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>낙태된 여아 추정치 - 스텝차트</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fafafa;
+      padding: 40px;
+    }
+
+    .chart-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1a1a1a;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    /* 차트 스타일 */
+    .step-line {
+      fill: none;
+      stroke: #e63946;
+      stroke-width: 2.5px;
+    }
+
+    .axis-x line,
+    .axis-x path,
+    .axis-y line,
+    .axis-y path {
+      stroke: #ccc;
+    }
+
+    .axis-x text,
+    .axis-y text {
+      font-size: 12px;
+      fill: #666;
+    }
+
+    .grid line {
+      stroke: #e5e5e5;
+      stroke-dasharray: 2,2;
+    }
+
+    .grid path {
+      stroke-width: 0;
+    }
+
+    /* 데이터 포인트 */
+    .data-point {
+      fill: #e63946;
+    }
+
+    /* 어노테이션 */
+    .annotation-dot {
+      fill: #e63946;
+      stroke: white;
+      stroke-width: 2;
+    }
+
+    .annotation-text {
+      font-size: 11px;
+      fill: #333;
+    }
+
+    .annotation-year {
+      font-weight: 600;
+    }
+
+    .annotation-line {
+      stroke: #999;
+      stroke-width: 1;
+      stroke-dasharray: 2,2;
+    }
+  </style>
+</head>
+<body>
+  <div class="chart-container">
+    <h1>성별 선택적 낙태로 사라진 여아들</h1>
+    <p class="subtitle">연도별 낙태된 여아 추정치 (1981-2010)</p>
+    <div id="chart"></div>
+  </div>
+
+  <script>
+    // 데이터
+    const data = [
+      {year: 1981, value: 8536},
+      {year: 1982, value: 6981},
+      {year: 1983, value: 8271},
+      {year: 1984, value: 10053},
+      {year: 1985, value: 13213},
+      {year: 1986, value: 19177},
+      {year: 1987, value: 10767},
+      {year: 1988, value: 23304},
+      {year: 1989, value: 19449},
+      {year: 1990, value: 32848},
+      {year: 1991, value: 23407},
+      {year: 1992, value: 27965},
+      {year: 1993, value: 32649},
+      {year: 1994, value: 32590},
+      {year: 1995, value: 26112},
+      {year: 1996, value: 20286},
+      {year: 1997, value: 9753},
+      {year: 1998, value: 14693},
+      {year: 1999, value: 12702},
+      {year: 2000, value: 14804},
+      {year: 2001, value: 10140},
+      {year: 2002, value: 11153},
+      {year: 2003, value: 8145},
+      {year: 2004, value: 6910},
+      {year: 2005, value: 5639},
+      {year: 2006, value: 5313},
+      {year: 2007, value: 2738},
+      {year: 2008, value: 2912},
+      {year: 2009, value: 2932},
+      {year: 2010, value: 4064}
+    ];
+
+    // 어노테이션 정보
+    const annotations = [
+      {year: 1981, label: "초음파기기 도입", position: "above"},
+      {year: 1987, label: "의료법 개정\n성별고지 금지", position: "below"},
+      {year: 1990, label: "백마의 해\n성비 불균형 최고조", position: "above"},
+      {year: 1994, label: "형사처벌 조항 추가", position: "above"},
+      {year: 2002, label: "흑마의 해\n(큰 변화 없음)", position: "above"},
+      {year: 2007, label: "성비 정상범위 진입", position: "below"},
+      {year: 2009, label: "성별고지 금지\n헌법불합치 결정", position: "below"}
+    ];
+
+    // 차트 크기 설정
+    const margin = {top: 60, right: 30, bottom: 50, left: 70};
+    const width = 740 - margin.left - margin.right;
+    const height = 450 - margin.top - margin.bottom;
+
+    // SVG 생성
+    const svg = d3.select("#chart")
+      .append("svg")
+      .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+      .attr("preserveAspectRatio", "xMidYMid meet")
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // 스케일 설정
+    const xScale = d3.scaleLinear()
+      .domain([1981, 2010])
+      .range([0, width]);
+
+    const yScale = d3.scaleLinear()
+      .domain([0, 35000])
+      .range([height, 0]);
+
+    // 그리드 라인
+    svg.append("g")
+      .attr("class", "grid")
+      .call(d3.axisLeft(yScale)
+        .tickSize(-width)
+        .tickFormat("")
+        .ticks(7)
+      );
+
+    // X축
+    svg.append("g")
+      .attr("class", "axis-x")
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(xScale)
+        .tickFormat(d3.format("d"))
+        .ticks(10)
+      );
+
+    // Y축
+    svg.append("g")
+      .attr("class", "axis-y")
+      .call(d3.axisLeft(yScale)
+        .tickFormat(d => d3.format(",")(d) + "명")
+        .ticks(7)
+      );
+
+    // 스텝 라인 생성기
+    const stepLine = d3.line()
+      .x(d => xScale(d.year))
+      .y(d => yScale(d.value))
+      .curve(d3.curveStepAfter);
+
+    // 스텝 라인 그리기
+    svg.append("path")
+      .datum(data)
+      .attr("class", "step-line")
+      .attr("d", stepLine);
+
+    // 어노테이션 그리기
+    annotations.forEach(anno => {
+      const dataPoint = data.find(d => d.year === anno.year);
+      if (!dataPoint) return;
+
+      const x = xScale(anno.year);
+      const y = yScale(dataPoint.value);
+      const offsetY = anno.position === "above" ? -15 : 25;
+
+      // 어노테이션 점
+      svg.append("circle")
+        .attr("class", "annotation-dot")
+        .attr("cx", x)
+        .attr("cy", y)
+        .attr("r", 5);
+
+      // 어노테이션 텍스트
+      const textGroup = svg.append("g")
+        .attr("transform", `translate(${x}, ${y + offsetY})`);
+
+      const lines = anno.label.split("\n");
+      lines.forEach((line, i) => {
+        textGroup.append("text")
+          .attr("class", "annotation-text")
+          .attr("text-anchor", "middle")
+          .attr("y", i * 14)
+          .text(line);
+      });
+    });
+
+  </script>
+</body>
+</html>
