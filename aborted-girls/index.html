@@ -19,11 +19,11 @@
 </head>
 
 <body>
-    <div class="content">
         <div class="header">
-            <h1>Slaughted Unborn Girls</h1>
-            <p class="subhead">Here is the subhead or additional content you want to add in</p>
+            <h1>Girl-slaughter: 37 Years of Sex-Selective Abortion in South Korea</h1>
+            <!-- <p class="subhead">Here is the subhead or additional content you want to add in</p> -->
         </div>
+      <div class="content">
         <div class="byline">
             <p>By <a href="https://seulgijung.github.io">Seulgi Jung</a></p>
         </div>
@@ -571,7 +571,6 @@
         </figure>
         <p>The analysis of average total birth sex ratio from 1997 through 2005 shows that the trend had been heavily spearheaded by Gyeongsang Province, with all five of its regions, including metropolitan cities like Daegu, topping the list.</p>
     </div>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 .chart2-root {
   position: relative;
@@ -582,11 +581,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 .chart2-spacer {
   position: relative;
 }
-
 .chart2-sticky {
   position: sticky;
   top: 0;
@@ -629,86 +626,76 @@
 .chart2-anno-inner {
   display: inline-block;
   max-width: 520px;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.6;
-  padding: 0 24px;
+  padding: 12px 24px;
   opacity: 0;
   transition: opacity 0.45s;
+  background: rgba(255, 255, 255, 0.85);
 }
 .chart2-anno-inner.show { opacity: 1; }
 
-/* Waffle columns viewport */
-.chart2-viewport {
+/* Tile canvas - all tiles live here as absolutely positioned elements */
+.chart2-tile-canvas {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  display: flex;
-  align-items: flex-end;
-  padding-bottom: 60px;
-  transition: opacity 0.5s;
+  pointer-events: none;
 }
-.chart2-track {
+.chart2-tile {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #e03030;
+  transition: none; /* JS controls transitions */
+}
+
+/* Year labels track */
+.chart2-labels-viewport {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.chart2-labels-track {
   display: flex;
-  align-items: flex-end;
   gap: 16px;
   padding-left: 50px;
   will-change: transform;
   transition: transform 0.2s ease-out;
 }
-
-.chart2-col-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.chart2-year-label {
+  font-size: 12pt;
+  white-space: nowrap;
+  text-align: center;
   opacity: 0;
   transition: opacity 0.45s ease-out;
-}
-.chart2-col-tiles {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 1px;
-}
-.chart2-tile-row {
-  display: flex;
-  gap: 1px;
-}
-.chart2-tile {
-  width: 15px;
-  height: 15px;
-  background: #e03030;
-}
-.chart2-year-label {
-  margin-top: 8px;
-  font-size: 15pt;
-  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-/* Final rectangle scene */
-.chart2-final {
+/* Final text overlay */
+.chart2-final-text-wrap {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  pointer-events: none;
   opacity: 0;
   transition: opacity 0.6s;
-  pointer-events: none;
-  padding-left: 40px;
+}
+.chart2-final-text-wrap.show { opacity: 1; }
+.chart2-final-text-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 40px;
 }
-.chart2-final.show {
-  opacity: 1;
-}
-.chart2-rect-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1px;
+/* invisible spacer to push text to the right of where the rectangle will be */
+.chart2-final-spacer {
   flex-shrink: 0;
-}
-.chart2-rect-tile {
-  width: 7px;
-  height: 7px;
-  background: #e03030;
 }
 .chart2-final-text {
   max-width: 320px;
@@ -722,9 +709,17 @@
   font-size: 17px;
   line-height: 1.65;
 }
+
+@media (max-width: 600px) {
+  .chart2-final-text-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .chart2-final-text {
+    max-width: 90%;
+  }
+}
 </style>
-</head>
-<body>
 
 <div class="chart2-root" id="c2root">
 <div class="chart2-spacer" id="c2spacer">
@@ -739,15 +734,22 @@
     <div class="chart2-anno-inner" id="c2anno"></div>
   </div>
 
-  <div class="chart2-viewport" id="c2vp">
-    <div class="chart2-track" id="c2track"></div>
+  <!-- All tiles live here, positioned absolutely -->
+  <div class="chart2-tile-canvas" id="c2canvas"></div>
+
+  <!-- Year labels -->
+  <div class="chart2-labels-viewport" id="c2labelsVp">
+    <div class="chart2-labels-track" id="c2labelsTrack"></div>
   </div>
 
-  <div class="chart2-final" id="c2final">
-    <div class="chart2-rect-grid" id="c2grid"></div>
-    <div class="chart2-final-text">
-      <div class="big-num">408,000</div>
-      <p>30년간 약 <strong>408,000명</strong>의 여아가 성별 선택 낙태로 태어나지 못했다. 이는 메트라이프 스타디움을 <strong>다섯 번</strong> 가득 채우는 규모다.</p>
+  <!-- Final text (shown alongside rectangle) -->
+  <div class="chart2-final-text-wrap" id="c2finalText">
+    <div class="chart2-final-text-inner">
+      <div class="chart2-final-spacer" id="c2finalSpacer"></div>
+      <div class="chart2-final-text">
+        <div class="big-num">408,043</div>
+        <p>Over the course of three decades, an estimated <strong>408,043 girls</strong> were never born due to sex-selective abortion. That is enough to fill Madison Square Garden <strong>twenty times</strong>, or MetLife Stadium <strong>five times</strong> over.</p>
+      </div>
     </div>
   </div>
 
@@ -758,6 +760,11 @@
 <script>
 (function(){
   var TILE_UNIT = 500;
+  var COL_TILE  = 15;   // px, scrollytelling tile size
+  var COL_GAP   = 1;
+  var RECT_TILE = 12;   // px, final rectangle tile size
+  var RECT_GAP  = 1;
+  var COL_SPACING = 16; // gap between year columns
 
   fetch('chart_2.csv')
     .then(function(res){ return res.text(); })
@@ -771,28 +778,28 @@
         var count = parseInt(numStr);
         DATA.push({ y: year, t: Math.round(count / TILE_UNIT) });
       }
-      document.getElementById('c2legendText').textContent = '= ' + TILE_UNIT.toLocaleString() + ' aborted baby girls';
+      document.getElementById('c2legendText').textContent =
+        '= ' + TILE_UNIT.toLocaleString() + ' aborted baby girls';
       init(DATA);
     });
 
   function init(DATA){
 
   var ANNO = {
-    1981: "1981년, 한국 정부는 '1가구 1자녀' 캠페인을 시작했다. 같은 해 성감별 초음파 기술이 도입됐다.",
-    1986: "1986년, 정부는 의료법을 개정해 태아 성별 고지를 금지했지만 단속은 느슨했다.",
-    1987: "1987년 잠시 줄었던 수치는 곧 반등했다. 금지법은 실효성이 없었다.",
-    1990: "1990년, 성별 선택 낙태는 정점을 찍었다. 한 해에만 약 32,000명의 여아가 사라졌다.",
-    1994: "1994년, 헌법재판소는 성별 고지 금지가 합헌이라고 판결했다.",
-    1997: "1997년 IMF 외환위기가 터지면서 출산율 자체가 급락했고, 성별 선택 낙태도 줄었다.",
-    2002: "2000년대 들어 딸에 대한 선호가 서서히 변하기 시작했다.",
-    2009: "2009년, 헌법재판소는 임신 후반기 성별 고지 금지를 위헌으로 판결했다.",
-    2010: "2010년, 출생성비는 거의 정상 수준으로 돌아왔지만 30년간의 흔적은 지워지지 않았다."
+    1981: "In the early 1980s, ultrasound technology capable of fetal sex determination began to spread across South Korea.",
+    1986: "The sex ratio at birth \u2014 the number of boys born per 100 girls \u2014 driven by ultrasound technology, surged relentlessly",
+    1987: "until the 1987 Medical Law amendment brought the numbers down. But the decline was short-lived.",
+    1990: "In 1990, sex-selective abortion peaked. In this Year of the White Horse \u2014 a year considered especially inauspicious for girls, as daughters born in it were believed to grow up unruly \u2014 an estimated 32,000 girls went missing.",
+    1994: "When the 1987 law proved ineffective, criminal penalties were added in 1994: medical practitioners who violated the ban could face up to three years in prison or a fine of up to 10 million won. Administrative sanctions, including the revocation of medical licenses, were also introduced. An estimated 32,000 girls went missing this year.",
+    1997: "After the 1994 law amendment, the sex ratio appeared to decline steadily",
+    2002: "but it spiked without fail in years considered inauspicious for girls: the Years of the Tiger, Dragon, and Horse.",
+    2009: "In 2009, the Medical Law was amended to allow fetal sex disclosure after 32 weeks of gestation after the 2008 Constitutional Court ruling that the blanket ban on disclosing fetal sex was unconstitutional.",
+    2010: "By 2010, the sex ratio at birth had nearly returned to normal. The following year, in 2011, it entered the 105 range, considered the natural sex ratio."
   };
 
   /* ── STEP MAP ── */
   var LINGER = 3;
   var steps = [];
-
   DATA.forEach(function(d, i){
     steps.push({yi:i, phase:'show'});
     if (ANNO[d.y]) {
@@ -806,53 +813,30 @@
   var PX = 110;
 
   /* ── DOM refs ── */
-  var root   = document.getElementById('c2root');
-  var spacer = document.getElementById('c2spacer');
-  var track  = document.getElementById('c2track');
-  var annoEl = document.getElementById('c2anno');
-  var legend = document.getElementById('c2legend');
-  var vp     = document.getElementById('c2vp');
-  var fin    = document.getElementById('c2final');
-  var grid   = document.getElementById('c2grid');
+  var root      = document.getElementById('c2root');
+  var spacer    = document.getElementById('c2spacer');
+  var canvas    = document.getElementById('c2canvas');
+  var annoEl    = document.getElementById('c2anno');
+  var legend    = document.getElementById('c2legend');
+  var labelsVp  = document.getElementById('c2labelsVp');
+  var labelsTrk = document.getElementById('c2labelsTrack');
+  var finText   = document.getElementById('c2finalText');
+  var finSpacer = document.getElementById('c2finalSpacer');
+  var sticky    = document.getElementById('c2sticky');
 
   spacer.style.height = (TOTAL * PX + window.innerHeight) + 'px';
 
-  /* ── Build waffle columns ── */
-  var colEls = [];
-  DATA.forEach(function(d){
-    var g = document.createElement('div');
-    g.className = 'chart2-col-group';
+  /* ── Compute column layout (for scrollytelling positions) ── */
+  var colWidth = COL_TILE * 2 + COL_GAP; // 2 tiles wide
+  var colX = []; // left x of each column
+  var padLeft = 50;
+  var x = padLeft;
+  for (var i = 0; i < DATA.length; i++){
+    colX[i] = x;
+    x += colWidth + COL_SPACING;
+  }
 
-    var cw = document.createElement('div');
-    cw.className = 'chart2-col-tiles';
-
-    var full = Math.floor(d.t / 2);
-    var rem  = d.t % 2;
-
-    for (var r = 0; r < full; r++){
-      var row = document.createElement('div');
-      row.className = 'chart2-tile-row';
-      row.innerHTML = '<div class="chart2-tile"></div><div class="chart2-tile"></div>';
-      cw.appendChild(row);
-    }
-    if (rem){
-      var row = document.createElement('div');
-      row.className = 'chart2-tile-row';
-      row.innerHTML = '<div class="chart2-tile"></div>';
-      cw.appendChild(row);
-    }
-    g.appendChild(cw);
-
-    var lbl = document.createElement('div');
-    lbl.className = 'chart2-year-label';
-    lbl.textContent = d.y;
-    g.appendChild(lbl);
-
-    track.appendChild(g);
-    colEls.push(g);
-  });
-
-  /* ── Final rectangle: auto-calculate best fit ── */
+  /* ── Compute rectangle layout ── */
   var totalTiles = 0;
   DATA.forEach(function(d){ totalTiles += d.t; });
   var RC = 1, RR = totalTiles, bestAspect = Infinity;
@@ -863,11 +847,86 @@
       if (aspect < bestAspect){ bestAspect = aspect; RC = c; RR = r; }
     }
   }
-  var RTOTAL = RC * RR;
-  grid.style.width = (RC * 8 - 1) + 'px';
-  var html = '';
-  for (var i = 0; i < RTOTAL; i++) html += '<div class="chart2-rect-tile"></div>';
-  grid.innerHTML = html;
+
+  /* ── Create ALL tiles as absolutely positioned divs ── */
+  var allTiles = []; // flat array of {el, yearIdx, localIdx}
+  var tilesByYear = []; // tilesByYear[yi] = [{el, ...}, ...]
+
+  DATA.forEach(function(d, yi){
+    var arr = [];
+    for (var ti = 0; ti < d.t; ti++){
+      var el = document.createElement('div');
+      el.className = 'chart2-tile';
+      el.style.opacity = '0';
+      canvas.appendChild(el);
+      var obj = {el: el, yi: yi, li: ti};
+      allTiles.push(obj);
+      arr.push(obj);
+    }
+    tilesByYear.push(arr);
+  });
+
+  /* ── Compute column positions for each tile (scrollytelling phase) ── */
+  // Returns {x, y} relative to sticky container, bottom-aligned
+  function getColPos(yi, localIdx){
+    var tCount = DATA[yi].t;
+    var rows = Math.ceil(tCount / 2);
+    // localIdx 0 = first tile. Fill bottom-up, 2 per row.
+    // Row 0 is bottom row. Row (rows-1) is top row.
+    var row = Math.floor(localIdx / 2);
+    var col = localIdx % 2;
+    // Bottom of chart area
+    var bottomY = sticky.clientHeight - 60; // padding-bottom for labels
+    var tileX = colX[yi] + col * (COL_TILE + COL_GAP);
+    var tileY = bottomY - (row + 1) * (COL_TILE + COL_GAP) + COL_GAP;
+    return {x: tileX, y: tileY};
+  }
+
+  /* ── Compute rectangle positions for each tile ── */
+  // Center the rectangle in the viewport (or left-center for desktop with text)
+  function getRectPositions(){
+    var rectW = RC * (RECT_TILE + RECT_GAP) - RECT_GAP;
+    var rectH = RR * (RECT_TILE + RECT_GAP) - RECT_GAP;
+    var vpW = sticky.clientWidth;
+    var vpH = sticky.clientHeight;
+
+    // On mobile (narrow), center; on desktop, offset left to leave room for text
+    var isMobile = vpW < 600;
+    var rectLeft, rectTop;
+    if (isMobile){
+      rectLeft = (vpW - rectW) / 2;
+      rectTop = vpH * 0.15;
+    } else {
+      rectLeft = (vpW - rectW) / 2 - 180;
+      rectTop = (vpH - rectH) / 2;
+    }
+
+    // Set spacer width for text positioning
+    finSpacer.style.width = rectW + 'px';
+    finSpacer.style.height = rectH + 'px';
+
+    var positions = [];
+    for (var i = 0; i < allTiles.length && i < RC * RR; i++){
+      var rCol = i % RC;
+      var rRow = Math.floor(i / RC);
+      positions.push({
+        x: rectLeft + rCol * (RECT_TILE + RECT_GAP),
+        y: rectTop + rRow * (RECT_TILE + RECT_GAP)
+      });
+    }
+    return positions;
+  }
+
+  /* ── Build year labels ── */
+  var labelEls = [];
+  DATA.forEach(function(d, i){
+    var lbl = document.createElement('div');
+    lbl.className = 'chart2-year-label';
+    lbl.textContent = d.y;
+    lbl.style.width = colWidth + 'px';
+    labelsTrk.appendChild(lbl);
+    labelEls.push(lbl);
+  });
 
   /* ── Pre-compute first-show step for each year ── */
   var firstStep = [];
@@ -879,6 +938,11 @@
       }
     }
   });
+
+  /* ── State tracking ── */
+  var currentMode = 'columns'; // 'columns' or 'rect'
+  var transitionStartTime = 0;
+  var TRANSITION_MS = 900;
 
   /* ── Scroll logic ── */
   var raf = false;
@@ -894,36 +958,92 @@
 
     var progress = scrolled / PX;
     var curStep  = Math.floor(progress);
-
     if (curStep >= TOTAL) curStep = TOTAL - 1;
 
     var step   = steps[curStep];
     var isRect = step.phase === 'rect' || step.phase === 'exit';
 
-    /* ── Show columns ── */
-    colEls.forEach(function(el, i){
-      var fs = firstStep[i];
-      if (progress >= fs + 0.15){
-        el.style.opacity = '1';
-      } else if (progress >= fs){
-        el.style.opacity = String(Math.min(1, (progress - fs) * 4));
-      } else {
-        el.style.opacity = '0';
-      }
-    });
-
-    /* ── Horizontal pan ── */
+    /* ── Determine horizontal pan offset ── */
+    var panX = 0;
     if (!isRect){
       var activeIdx = 0;
       for (var i = 0; i < DATA.length; i++){
         if (progress >= firstStep[i]) activeIdx = i;
       }
-      var ag   = colEls[activeIdx];
-      var gOff = ag.offsetLeft + ag.offsetWidth / 2;
-      var vpW  = vp.clientWidth;
-      var targetX = vpW * 0.55 - gOff;
-      if (targetX > 0) targetX = 0;
-      track.style.transform = 'translateX(' + targetX + 'px)';
+      var colCenter = colX[activeIdx] + colWidth / 2;
+      var vpW = sticky.clientWidth;
+      panX = vpW * 0.55 - colCenter;
+      if (panX > 0) panX = 0;
+    }
+
+    /* ── Mode transition detection ── */
+    if (isRect && currentMode === 'columns'){
+      currentMode = 'rect';
+      transitionStartTime = performance.now();
+      // Enable CSS transitions on all tiles
+      allTiles.forEach(function(t){
+        t.el.style.transition = 'left ' + TRANSITION_MS + 'ms ease-in-out, top ' + TRANSITION_MS + 'ms ease-in-out, width ' + TRANSITION_MS + 'ms ease-in-out, height ' + TRANSITION_MS + 'ms ease-in-out';
+      });
+    } else if (!isRect && currentMode === 'rect'){
+      currentMode = 'columns';
+      transitionStartTime = performance.now();
+      allTiles.forEach(function(t){
+        t.el.style.transition = 'left ' + TRANSITION_MS + 'ms ease-in-out, top ' + TRANSITION_MS + 'ms ease-in-out, width ' + TRANSITION_MS + 'ms ease-in-out, height ' + TRANSITION_MS + 'ms ease-in-out';
+      });
+      // Remove transitions after animation completes
+      setTimeout(function(){
+        if (currentMode === 'columns'){
+          allTiles.forEach(function(t){ t.el.style.transition = 'none'; });
+        }
+      }, TRANSITION_MS + 50);
+    }
+
+    /* ── Position tiles ── */
+    if (isRect){
+      // Move to rectangle positions
+      var rectPos = getRectPositions();
+      allTiles.forEach(function(t, i){
+        t.el.style.opacity = '1';
+        if (i < rectPos.length){
+          t.el.style.left = rectPos[i].x + 'px';
+          t.el.style.top  = rectPos[i].y + 'px';
+          t.el.style.width  = RECT_TILE + 'px';
+          t.el.style.height = RECT_TILE + 'px';
+        } else {
+          t.el.style.opacity = '0';
+        }
+      });
+    } else {
+      // Column positions
+      allTiles.forEach(function(t){
+        var yi = t.yi;
+        var fs = firstStep[yi];
+        // visibility
+        if (progress >= fs + 0.15){
+          t.el.style.opacity = '1';
+        } else if (progress >= fs){
+          t.el.style.opacity = String(Math.min(1, (progress - fs) * 4));
+        } else {
+          t.el.style.opacity = '0';
+        }
+        var pos = getColPos(yi, t.li);
+        t.el.style.left   = (pos.x + panX) + 'px';
+        t.el.style.top    = pos.y + 'px';
+        t.el.style.width  = COL_TILE + 'px';
+        t.el.style.height = COL_TILE + 'px';
+      });
+    }
+
+    /* ── Year labels ── */
+    if (!isRect){
+      labelEls.forEach(function(el, i){
+        var fs = firstStep[i];
+        el.style.opacity = (progress >= fs) ? '1' : '0';
+      });
+      labelsTrk.style.transform = 'translateX(' + panX + 'px)';
+      labelsVp.style.opacity = '1';
+    } else {
+      labelsVp.style.opacity = '0';
     }
 
     /* ── Annotation ── */
@@ -956,22 +1076,20 @@
     if (isRect) legend.classList.add('hidden');
     else legend.classList.remove('hidden');
 
-    /* ── Final scene ── */
-    if (isRect){
-      fin.classList.add('show');
-      vp.style.opacity = '0';
-    } else {
-      fin.classList.remove('show');
-      vp.style.opacity = '1';
-    }
+    /* ── Final text ── */
+    if (isRect) finText.classList.add('show');
+    else finText.classList.remove('show');
   }
 
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', function(){
     spacer.style.height = (TOTAL * PX + window.innerHeight) + 'px';
+    // Remove transitions during resize to avoid janky movement
+    allTiles.forEach(function(t){ t.el.style.transition = 'none'; });
+    tick();
   });
   tick();
-  }
+  } // init
 })();
 </script>
 <div class="footer">

@@ -12,6 +12,7 @@ body {
 
 .header {
     padding: 3em 0;
+    max-width: 800px;
 }
 
 a {
